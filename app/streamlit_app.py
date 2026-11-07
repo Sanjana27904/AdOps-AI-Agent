@@ -1,3 +1,5 @@
+from app.database.db import DB_PATH
+from app.database.seed import seed_database
 import sys
 from pathlib import Path
 
@@ -35,6 +37,8 @@ st.title("📊 AdOps Agent")
 st.caption("Autonomous Advertising Operations Assistant")
 st.divider()
 
+if not DB_PATH.exists():
+    seed_database()
 # Select a campaign
 campaigns = list_campaigns()
 
